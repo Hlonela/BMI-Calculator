@@ -55,10 +55,12 @@ def button_clear():
 
 
 def BMI_button():
-    right_weight = int(Input_weight.get())
-    right_height = int(Input_height.get())
+    right_weight = float(Input_weight.get())
+    right_height = float(Input_height.get())
     correct_BMI = right_weight / (right_height / 100) ** 2
     Input_BMI.insert(0, correct_BMI)
+
+
 
 
 def button_exit(): #When the user presses 'exit', a popup box to ask the user whether they really want to exit will show up
@@ -70,9 +72,13 @@ def button_exit(): #When the user presses 'exit', a popup box to ask the user wh
 
 #Getting the selected gender from the Combobox
 def getSelection(Combobox):
-    val = Combobox.get()
+
+    val = Combobox.get() #Getting the selected gender type
     print(val)
     Input_ideal.insert(0, val)
+
+def Ideal_button():
+
 
 
 # Buttons
