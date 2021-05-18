@@ -41,7 +41,7 @@ Input_ideal = tkinter.Entry(root)
 Input_ideal.place(x=250, y=295)
 
 # Combobox creation
-Combobox = Combobox(root, values=['Female', 'Male', 'Other'])
+Combobox = Combobox(root, values=['Female', 'Male'])
 Combobox.place(x=250, y=115, width=180)
 
 def button_clear():
@@ -61,7 +61,9 @@ def BMI_button():
     Input_BMI.insert(0, correct_BMI)
 
 
-
+def Age ():
+    get_age = int (Input_age.get())
+    print("Age:" + get_age)
 
 def button_exit(): #When the user presses 'exit', a popup box to ask the user whether they really want to exit will show up
     # EXITING
@@ -71,18 +73,29 @@ def button_exit(): #When the user presses 'exit', a popup box to ask the user wh
 
 
 #Getting the selected gender from the Combobox
-def getSelection(Combobox):
-
+def getSelection():
     val = Combobox.get() #Getting the selected gender type
-    print(val)
+    # val = StringVar ()
     Input_ideal.insert(0, val)
+    print(val)
 
-def Ideal_button():
-
+def Ideal_button ():
+    right_weight = float(Input_weight.get())
+    right_height = float(Input_height.get())
+    get_age = float (Input_age.get())
+    val = Combobox.get() #Getting the selected gender type
+    if val == "Female":
+        correct_BMI = 0.5 * right_weight / (right_height / 100) ** 2 + 0.03 * get_age + 11
+        Input_ideal.insert(0, correct_BMI)
+    elif val == "Male":
+        correct_BMI = 0.5 * right_weight / (right_height / 100) ** 2 + 0.03 * get_age + 11
+        Input_ideal.insert(0, correct_BMI)
+    else:
+        print("This is an error")
 
 
 # Buttons
-Ideal_button = Button (root, borderwidth=10, font=("Consolas 10 bold"), text="Ideal-BMI", bg="green", fg="white",width=35, command=getSelection)
+Ideal_button = Button (root, borderwidth=10, font=("Consolas 10 bold"), text="Ideal-BMI", bg="green", fg="white",width=35, command=Ideal_button)
 Ideal_button.place(x=300, y=550)
 BMI_button = Button(root, borderwidth=10, font=("Consolas 10 bold"), text="BMI-Calculate", bg="green", fg="white",width=35, command=BMI_button)
 BMI_button.place(x=300, y=500, width=350)
